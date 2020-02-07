@@ -22,10 +22,11 @@ public class BuddyInfoController {
     }
 
     @ResponseBody
-    @PostMapping(value = "/add_buddyinfo", produces = "application/json")
+    @PostMapping(value = "/addBuddyInfo", produces = "application/json")
     public AddressBook addBuddy(@RequestParam("id") long id, @RequestParam(value = "name") String name, @RequestParam(value = "phonenum") String phoneNum) {
         AddressBook addressBook = this.addressBookRepository.findById(id);
         BuddyInfo buddyInfo = new BuddyInfo(name, phoneNum);
+
         addressBook.addBuddyInfo(buddyInfo);
         this.addressBookRepository.save(addressBook);
 
@@ -33,7 +34,7 @@ public class BuddyInfoController {
     }
 
     @ResponseBody
-    @PostMapping(value = "/delete_buddyinfo", produces = "application/json")
+    @PostMapping(value = "/deleteBuddyInfo", produces = "application/json")
     @Transactional
     public void deleteBuddyInfo(@RequestParam("id") long id) {
         BuddyInfo buddy = this.buddyInfoRepository.findById(id);

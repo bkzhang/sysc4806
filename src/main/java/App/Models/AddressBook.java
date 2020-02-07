@@ -46,11 +46,12 @@ public class AddressBook implements Serializable {
         BuddyInfo buddyInfo = new BuddyInfo();
         buddyInfo.setName(name);
         buddyInfo.setPhoneNum(phoneNum);
-        addressBook.add(buddyInfo);
+        this.addressBook.add(buddyInfo);
     }
 
     public void addBuddyInfo(BuddyInfo buddyInfo) {
-        addressBook.add(buddyInfo);
+        this.addressBook.add(buddyInfo);
+        buddyInfo.setAddressBook(this);
     }
 
     public List<BuddyInfo> getBuddyInfo() {

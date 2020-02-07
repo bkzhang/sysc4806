@@ -13,5 +13,5 @@ public interface BuddyInfoRepository extends CrudRepository<BuddyInfo, Long> {
 
     BuddyInfo findById(@Param("id") long id);
 
-    void deleteById(Integer id);
+    void deleteById(long id);
 }

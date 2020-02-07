@@ -10,12 +10,14 @@ public class AddressBookTest {
     public AddressBook addressBook;
     public String name;
     public String phoneNum;
+    public String address;
 
     @Before
     public void BeforeEachTest() {
         addressBook = new AddressBook();
         name = "Baby Yoda";
         phoneNum = "838-292-4949";
+        address = "3 Tatooine Drive";
     }
 
     @Test
