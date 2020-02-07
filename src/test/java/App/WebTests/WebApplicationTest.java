@@ -47,11 +47,7 @@ public class WebApplicationTest {
         this.mockMvc.perform(post("/deleteBuddyInfo")
                 .param("id", "3"))
                 .andExpect(status().isOk());
-        this.mockMvc.perform(get("/addressBook")
-                .param("id", "1"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("nhoj")));
-        this.mockMvc.perform(get("/addressBook?id=1")).andDo(print()).andExpect(status().isOk())
+        this.mockMvc.perform(get("/addressBook?id=1")).andExpect(status().isOk())
                 .andExpect(content().string(not(containsString("john"))))
                 .andExpect(content().string(containsString("nhoj")));
     }
