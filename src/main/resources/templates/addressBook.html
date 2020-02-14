@@ -3,26 +3,36 @@
 <head>
     <title>Getting Started: Handling Form Submission</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/addressBook.js"></script>
 </head>
 <body>
-<h1>AddressBook</h1>
-<table>
+    <h1>AddressBook</h1>
 
-    <thead>
-    <tr>
-        <th> Name </th>
-        <th> Number </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:if="${addressBook.getAddressBook().isEmpty()}">
-        <td colspan="2"> No buddies Available </td>
-    </tr>
-    <tr th:each="buddy : ${addressBook.getBuddyInfo()}">
-        <td><span th:text="${buddy.getName()}"> Name </span></td>
-        <td><span th:text="${buddy.getPhoneNum()}"> Number </span></td>
-    </tr>
-    </tbody>
-</table>
+    <h2>Add Buddy</h2>
+    <form action="#" th:action="@{/addBuddy}" th:object="${buddyInfo}" method="post">
+        <p>Address Book Id: <input type="text" th:field="*{bookId}" /></p>
+        <p>Name: <input type="text" th:field="*{name}" /></p>
+        <p>Phone: <input type="text" th:field="*{phoneNum}" /></p>
+        <p><input type="submit" value="Submit" />
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th> Name </th>
+            <th> Number </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${addressBook.getAddressBook().isEmpty()}">
+            <td colspan="2"> No buddies Available </td>
+        </tr>
+        <tr th:each="buddy : ${addressBook.getBuddyInfo()}">
+            <td><span th:text="${buddy.getName()}"> Name </span></td>
+            <td><span th:text="${buddy.getPhoneNum()}"> Number </span></td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

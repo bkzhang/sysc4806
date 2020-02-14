@@ -13,6 +13,7 @@ public class BuddyInfo implements Serializable {
     private Long id;
     private String name;
     private String phoneNum;
+    private Long bookId;
 
     @JsonBackReference
     @ManyToOne
@@ -31,6 +32,14 @@ public class BuddyInfo implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getBookId() {
+        return this.bookId;
+    }
+
+    public void setBookId(Long id) {
+        this.bookId = id;
     }
 
     public String getName() {

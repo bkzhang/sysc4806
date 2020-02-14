@@ -19,16 +19,20 @@ public class AddressBookController {
         this.addressBookRepository = addressBookRepository;
     }
 
-    @GetMapping("/addressBook")
+    @GetMapping("/addressbook")
     public String addressBook(@RequestParam("id") long id, Model model) {
         AddressBook addressBook = this.addressBookRepository.findById(id);
-
+        if (addressBook == null) {
+            addressBook = new AddressBook();
+            addressBook.setId(id);
+        }
         model.addAttribute("addressBook", addressBook);
+        model.addAttribute("buddyInfo", new BuddyInfo());
         return "addressBook";
     }
 
     @ResponseBody
-    @PostMapping(value = "/newAddressBook", produces = "application/json")
+    @PostMapping(value = "/newaddressbook", produces = "application/json")
     public AddressBook newAddressBook(Model model) {
         AddressBook addressBook = new AddressBook();
         this.addressBookRepository.save(addressBook);
